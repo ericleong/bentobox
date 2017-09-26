@@ -2,6 +2,9 @@ package me.ericleong.bentobox.dagger.module;
 
 import java.util.concurrent.Callable;
 
+import javax.inject.Singleton;
+
+import dagger.Lazy;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Observable;
@@ -23,11 +26,16 @@ public class SushiModule {
         return new Rice();
     }
     @Provides
-    Observable<Sushi> providesSushi(final Fish fish, final Rice rice) {
+    Sushi providesSushi(final Fish fish, final Rice rice) {
+        return new Sushi(fish, rice);
+    }
+    @Singleton
+    @Provides
+    Observable<Sushi> providesSushiObservable(final Lazy<Sushi> sushiLazy) {
         return Observable.fromCallable(new Callable<Sushi>() {
             @Override
             public Sushi call() throws Exception {
-                return new Sushi(fish, rice);
+                return sushiLazy.get();
             }
         });
     }
