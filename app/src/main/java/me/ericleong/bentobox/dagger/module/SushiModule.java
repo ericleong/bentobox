@@ -1,7 +1,10 @@
 package me.ericleong.bentobox.dagger.module;
 
+import java.util.concurrent.Callable;
+
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.Observable;
 import me.ericleong.bentobox.model.Fish;
 import me.ericleong.bentobox.model.Rice;
 import me.ericleong.bentobox.model.Sushi;
@@ -20,7 +23,12 @@ public class SushiModule {
         return new Rice();
     }
     @Provides
-    Sushi providesSushi(Fish fish, Rice rice) {
-        return new Sushi(fish, rice);
+    Observable<Sushi> providesSushi(final Fish fish, final Rice rice) {
+        return Observable.fromCallable(new Callable<Sushi>() {
+            @Override
+            public Sushi call() throws Exception {
+                return new Sushi(fish, rice);
+            }
+        });
     }
 }
