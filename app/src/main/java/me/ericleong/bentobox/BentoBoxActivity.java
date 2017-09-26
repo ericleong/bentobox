@@ -8,11 +8,17 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import javax.inject.Inject;
+
 import dagger.android.AndroidInjection;
 import me.ericleong.bentobox.dagger.component.AppProductionComponent;
-import me.ericleong.bentobox.model.Sushi;
+import me.ericleong.bentobox.model.RiceBall;
+import me.ericleong.bentobox.model.Salad;
 
 public class BentoBoxActivity extends Activity {
+
+    @Inject
+    RiceBall riceBall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +29,12 @@ public class BentoBoxActivity extends Activity {
         App app = (App) getApplicationContext();
         AppProductionComponent productionComponent = app.getAppProductionComponent();
 
-        ListenableFuture<Sushi> sushiFuture =  productionComponent.getSushi();
-        Futures.addCallback(sushiFuture, new FutureCallback<Sushi>() {
+        ListenableFuture<Salad> sushiFuture =  productionComponent.getSalad();
+        Futures.addCallback(sushiFuture, new FutureCallback<Salad>() {
             @Override
-            public void onSuccess(@Nullable Sushi sushi) {
-                if (sushi != null) {
-                    sushi.swim();
+            public void onSuccess(@Nullable Salad salad) {
+                if (salad != null) {
+                    salad.dress();
                 }
             }
 
@@ -37,5 +43,7 @@ public class BentoBoxActivity extends Activity {
 
             }
         });
+
+        riceBall.roll();
     }
 }
