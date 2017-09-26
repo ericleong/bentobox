@@ -1,7 +1,7 @@
 package me.ericleong.bentobox.dagger.module;
 
-import dagger.Module;
-import dagger.Provides;
+import dagger.producers.ProducerModule;
+import dagger.producers.Produces;
 import me.ericleong.bentobox.model.Fish;
 import me.ericleong.bentobox.model.Rice;
 import me.ericleong.bentobox.model.Sushi;
@@ -9,17 +9,17 @@ import me.ericleong.bentobox.model.Sushi;
 /**
  * Created by Eric on 9/26/2017.
  */
-@Module
+@ProducerModule
 public class SushiModule {
-    @Provides
+    @Produces
     Fish providesFish() {
         return new Fish();
     }
-    @Provides
+    @Produces
     Rice providesRice() {
         return new Rice();
     }
-    @Provides
+    @Produces
     Sushi providesSushi(final Fish fish, final Rice rice) {
         return new Sushi(fish, rice);
     }

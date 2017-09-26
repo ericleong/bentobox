@@ -2,22 +2,17 @@ package me.ericleong.bentobox;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
-import java.util.concurrent.Callable;
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 
-import javax.inject.Inject;
-
-import dagger.Lazy;
 import dagger.android.AndroidInjection;
-import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
+import me.ericleong.bentobox.dagger.component.AppProductionComponent;
 import me.ericleong.bentobox.model.Sushi;
 
 public class BentoBoxActivity extends Activity {
-
-    @Inject
-    Lazy<Sushi> sushiLazy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +20,22 @@ public class BentoBoxActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bento_box);
 
-        Observable.fromCallable(
-                new Callable<Sushi>() {
-                    @Override
-                    public Sushi call() throws Exception {
-                        return sushiLazy.get();
-                    }
-                })
-                .subscribeOn(Schedulers.computation())
-                .subscribe(new Consumer<Sushi>() {
-                    @Override
-                    public void accept(Sushi sushi) throws Exception {
-                        sushi.swim();
-                    }
-                });
+        App app = (App) getApplicationContext();
+        AppProductionComponent productionComponent = app.getAppProductionComponent();
+
+        ListenableFuture<Sushi> sushiFuture =  productionComponent.getSushi();
+        Futures.addCallback(sushiFuture, new FutureCallback<Sushi>() {
+            @Override
+            public void onSuccess(@Nullable Sushi sushi) {
+                if (sushi != null) {
+                    sushi.swim();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
+            }
+        });
     }
 }

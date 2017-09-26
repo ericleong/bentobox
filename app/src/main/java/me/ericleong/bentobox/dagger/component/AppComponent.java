@@ -12,8 +12,7 @@ import me.ericleong.bentobox.dagger.module.SushiModule;
  */
 @Singleton
 @Component(modules = {
-        AndroidBindingModule.class,
-        SushiModule.class
+        AndroidBindingModule.class
 })
 public interface AppComponent {
     void inject(App app);
