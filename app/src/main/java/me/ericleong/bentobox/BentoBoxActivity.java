@@ -20,6 +20,9 @@ public class BentoBoxActivity extends Activity {
     @Inject
     RiceBall riceBall;
 
+    @Inject
+    Logger logger;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
@@ -45,5 +48,7 @@ public class BentoBoxActivity extends Activity {
         });
 
         riceBall.roll();
+
+        logger.log("Timber!");
     }
 }
