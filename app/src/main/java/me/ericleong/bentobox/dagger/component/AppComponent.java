@@ -9,7 +9,8 @@ import me.ericleong.bentobox.dagger.module.SushiModule;
  * Created by Eric on 9/26/2017.
  */
 @Component(modules = {
-        AndroidBindingModule.class
+        AndroidBindingModule.class,
+        SushiModule.class
 })
 public interface AppComponent {
     void inject(App app);

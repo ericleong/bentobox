@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Bento Box</string>
     <string name="sushi">&#x1F363;</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="sushi_fragment">SushiFragment</string>
 </resources>
