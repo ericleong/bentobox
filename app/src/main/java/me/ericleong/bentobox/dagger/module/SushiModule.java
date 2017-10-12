@@ -2,6 +2,7 @@ package me.ericleong.bentobox.dagger.module;
 
 import dagger.Module;
 import dagger.Provides;
+import me.ericleong.bentobox.BentoBoxActivity;
 import me.ericleong.bentobox.model.Fish;
 import me.ericleong.bentobox.model.Rice;
 import me.ericleong.bentobox.model.Sushi;

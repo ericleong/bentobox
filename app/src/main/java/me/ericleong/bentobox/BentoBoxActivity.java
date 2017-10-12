@@ -2,6 +2,7 @@ package me.ericleong.bentobox;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -19,5 +20,6 @@ public class BentoBoxActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bento_box);
         sushi.swim();
+        ((TextView) findViewById(R.id.text)).setText(R.string.sushi);
     }
 }
