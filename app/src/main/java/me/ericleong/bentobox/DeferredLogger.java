@@ -1,13 +1,11 @@
 package me.ericleong.bentobox;
 
+import android.support.annotation.Nullable;
+
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.MoreExecutors;
-
-import javax.annotation.Nullable;
-
-import me.ericleong.bentobox.dagger.component.AppProductionComponent;
 
 /**
  * Created by Eric on 9/26/2017.
