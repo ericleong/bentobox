@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BentoBox.iml" filepath="$PROJECT_DIR$/BentoBox.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bentobox.iml" filepath="$PROJECT_DIR$/bentobox.iml" />
     </modules>
   </component>
 </project>
