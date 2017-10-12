@@ -13,7 +13,7 @@ import me.ericleong.bentobox.model.Sushi;
 @Module
 public class SushiModule {
     @Provides
-    Fish providesFish() {
+    Fish providesFish(BentoBoxActivity bentoBoxActivity) {
         return new Fish();
     }
     @Provides

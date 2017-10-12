@@ -9,6 +9,8 @@ import me.ericleong.bentobox.BentoBoxActivity;
  */
 @Module
 public abstract class AndroidBindingModule {
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = {
+            SushiModule.class
+    })
     abstract BentoBoxActivity contributeBentoBoxActivityInjector();
 }
