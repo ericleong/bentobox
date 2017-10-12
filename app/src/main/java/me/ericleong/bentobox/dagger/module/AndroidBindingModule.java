@@ -13,6 +13,8 @@ public abstract class AndroidBindingModule {
     @ContributesAndroidInjector
     abstract BentoBoxActivity contributeBentoBoxActivityInjector();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(
+            modules = SushiModule.class
+    )
     abstract SushiFragment contributeSushiFragmentInjector();
 }

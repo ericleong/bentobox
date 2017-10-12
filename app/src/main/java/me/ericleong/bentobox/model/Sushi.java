@@ -10,13 +10,15 @@ import me.ericleong.bentobox.R;
  */
 
 public class Sushi {
-    public Sushi(Fish fish, Rice rice) {
 
+    private Fish fish;
+
+    public Sushi(Fish fish, Rice rice) {
+        this.fish = fish;
     }
 
-    @StringRes
-    public int swim() {
+    public String swim() {
         Log.w("Sushi", "Swimming!");
-        return R.string.sushi;
+        return fish.getContext().getResources().getString(R.string.sushi);
     }
 }
